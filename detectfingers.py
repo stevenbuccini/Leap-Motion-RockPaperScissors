@@ -62,36 +62,36 @@ def play_alone(listen, controller):
 def do_one_player(listen, controller):
   """Counts the number of times a player has pumped their hand.  After the third pump, records the number
      of fingers and turns that into a move"""
-    frame = controller.frame()
-    hands = frame.hands()
-    if len(hands) != 1 or hands[0] is None:
-        return
-    hand = hands[0]
-    if hand.velocity():
-        if listen.count_down == 3:        
-            listen.count_down = 0
-            listen.past_hands = []
-            return sign(hands[0], listen.average_num_fingers(controller))
-        elif abs(hand.velocity().y) < 50:
-            return None
-        elif len(listen.past_hands) == 9:
-            last_1 = sum(listen.past_hands[:3], 0) / 3
-            last_2 = sum(listen.past_hands[3:6], 0) / 3
-            last_3 = sum(listen.past_hands[6:], 0) / 3
-            if last_1<-300 and last_3>300:
-                listen.count_down += 1
-                listen.past_hands = []
-                return None
-            if hand and listen.past_hands:
-                shift_back(listen.past_hands)
-                listen.past_hands[0] = hand.velocity().y
-            return None
-        else:
-            if hand:
-                listen.past_hands.append(hand.velocity().y)
-            return None
-    else:
-        listen.past_hands = []
+  frame = controller.frame()
+  hands = frame.hands()
+  if len(hands) != 1 or hands[0] is None:
+      return
+  hand = hands[0]
+  if hand.velocity():
+      if listen.count_down == 3:        
+          listen.count_down = 0
+          listen.past_hands = []
+          return sign(hands[0], listen.average_num_fingers(controller))
+      elif abs(hand.velocity().y) < 50:
+          return None
+      elif len(listen.past_hands) == 9:
+          last_1 = sum(listen.past_hands[:3], 0) / 3
+          last_2 = sum(listen.past_hands[3:6], 0) / 3
+          last_3 = sum(listen.past_hands[6:], 0) / 3
+          if last_1<-300 and last_3>300:
+              listen.count_down += 1
+              listen.past_hands = []
+              return None
+          if hand and listen.past_hands:
+              shift_back(listen.past_hands)
+              listen.past_hands[0] = hand.velocity().y
+          return None
+      else:
+          if hand:
+              listen.past_hands.append(hand.velocity().y)
+          return None
+  else:
+      listen.past_hands = []
    
 def shift_back(l):
     #shifts the elements in list l back by 1 index

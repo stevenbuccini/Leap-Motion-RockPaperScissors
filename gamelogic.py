@@ -1,4 +1,4 @@
-from RPS1 import *
+from detectfingers import *
 import time, math, random
 
 
@@ -46,17 +46,17 @@ def play_computer(score_to_win,p1_score, p2_score, listener, controller):
 		time.sleep(1)
 		#obtain choice from the Leap Motion.
 		player_choice = play_alone(listener, controller)
-		print "    You chose " + player_choice
+		print("You chose " + player_choice)
 		#obtain computer's choice randomly.
 		computer_choice = computer_strategy()
-		print "    Computer chose " + computer_choice
+		print("Computer chose " + computer_choice)
 		#change score
 		p1_score, p2_score = change_score(player_choice, computer_choice, p1_score, p2_score)
 
 	if p1_score > p2_score:
-		print "Player 1 wins!"
+		print("Player 1 wins!")
 	else:
-		print "Computer wins!"
+		print("Computer wins!")
 	# The controller must be disposed of before the listener
 	controller = None
 
@@ -66,19 +66,19 @@ def change_score(p1_choice, p2_choice, p1_score, p2_score):
 	winning_object = determine_winner(p1_choice, p2_choice)
 
 	if winning_object != 'same':
-		print "\t" + winning_object.capitalize() + " wins."
+		print( "\t" + winning_object.capitalize() + " wins.")
 	if winning_object == p1_choice:
 		p1_score += 1
 	elif winning_object == p2_choice:
 		p2_score +=1
 	else:
-		print "You both chose the same object!"
-	print "Current score:  Human: " + str(p1_score) + " Computer: " + str(p2_score)
+		print("You both chose the same object!")
+	print("Current score:  Human: " + str(p1_score) + " Computer: " + str(p2_score))
 	return p1_score, p2_score
 
 
 def admin():
-	print "Let's play Rock, Paper, Scissors!"
+	print("Let's play Rock, Paper, Scissors!")
 	# Create a sample listener and assign it to a controller to receive events
 	listener = RPSListener()
 	controller = Leap.Controller(listener)
@@ -88,10 +88,13 @@ def admin():
 
 	#infinite loop because return will automatically exit when something is returned
 	while True:
-		print "What score would you like to play to?"
+		print("What score would you like to play to?")
 		#Wait statements are horrible, but we need to wait so the user can read the prompt and decide on what to do.
 		time.sleep(2)
 		score_to_win = average_num_fingers(listener, controller)
-		print "Play up to " + str(score_to_win)
+		print("Play up to " + str(score_to_win))
 		#call game logic, and pass in our score to win, both player's initial scores, the listener and the controller.
 		play_computer(score_to_win, 0, 0, listener, controller)
+
+if __name__ == "__main__":
+	admin()
