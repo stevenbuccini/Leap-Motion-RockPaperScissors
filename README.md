@@ -1,4 +1,4 @@
-Leap-Motion-RockPaperScissors
+Leap Motion RockPaperScissors
 =============================
 
 Play Rock Paper Scissors against the computer with your Leap Motion!
