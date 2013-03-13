@@ -11,5 +11,5 @@ Download the Leap Motion SDK, then run gamelogic from the command line with the 
 
 <code>python3 -i gamelogic.py
 
-<code> >>> admin()
+
 
