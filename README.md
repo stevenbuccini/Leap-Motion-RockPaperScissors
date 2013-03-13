@@ -9,7 +9,7 @@ Usage
 -----
 Download the Leap Motion SDK, then run gamelogic from the command line with the following command:
 
-python3 -i gamelogic.py
+<code>python3 -i gamelogic.py
 
->>> admin()
+<code> >>> admin()
 
