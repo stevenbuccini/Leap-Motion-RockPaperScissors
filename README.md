@@ -7,7 +7,7 @@ This project was built at a Leap Motion-sponsored hackathon at my school. This m
 
 The code tracks two things primarily:
 
-1. **Position of your hands** - When you play Rock, Paper, Scissors in real life, you pump your first as you say "Rock, Paper, Scissors!"  We track the pumping motion as well by watching the velocity of your palm.  On the third downward stroke, we look for what sign you threw (see below).
+1. **Position of your hands** - When you play Rock, Paper, Scissors in real life, you pump your first as you say "Rock, Paper, Scissors!"  We track the pumping motion as well by watching the changing velocity of your palm.  On the third downward stroke, we look for what sign you threw (see below).
 2. **Number of fingers** - The Leap Motion can only detect your fingers if they are moderately extended and positioned directly over the device.
   * If we see no fingers, we assume your hand is in a fist and figure you are showing Rock.
   * If we see 1-2 fingers, we assume you're throwing scissors.
